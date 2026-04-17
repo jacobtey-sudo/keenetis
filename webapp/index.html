@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
 
+<h2>Router Control Panel</h2>
+
+<button onclick="isp()">🌐 ISP</button>
+<button onclick="vpn1()">🔐 VPN 1</button>
+<button onclick="vpn2()">🔐 VPN 2</button>
+<button onclick="status()">📊 Status</button>
+
+<pre id="out"></pre>
+
+<script>
+const API = "http://YOUR_VPS_IP:8000";
+
+function show(r){
+  document.getElementById("out").innerText =
+    JSON.stringify(r, null, 2);
+}
+
+async function isp(){
+  show(await fetch(API+"/isp",{method:"POST"}).then(r=>r.json()));
+}
+
+async function vpn1(){
+  show(await fetch(API+"/vpn1",{method:"POST"}).then(r=>r.json()));
+}
+
+async function vpn2(){
+  show(await fetch(API+"/vpn2",{method:"POST"}).then(r=>r.json()));
+}
+
+async function status(){
+  show(await fetch(API+"/status").then(r=>r.json()));
+}
+
+Telegram.WebApp.expand();
+</script>
+
+</body>
+</html>
