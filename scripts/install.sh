@@ -9,8 +9,8 @@ apt install -y python3 python3-pip git openssh-client
 
 echo "📁 Cloning repo..."
 
-git clone https://github.com/YOUR_NAME/router-control-panel.git
-cd router-control-panel/backend
+git clone https://github.com/jacobtey-sudo/keenetis.git
+cd keenetis/backend
 
 echo "🐍 Installing python deps..."
 pip3 install -r requirements.txt
@@ -23,7 +23,7 @@ Description=Router Control API
 After=network.target
 
 [Service]
-WorkingDirectory=/root/router-control-panel/backend
+WorkingDirectory=/root/keenetis/backend
 ExecStart=/usr/bin/uvicorn app:app --host 0.0.0.0 --port 8000
 Restart=always
 
