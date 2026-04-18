@@ -7,13 +7,18 @@ echo "📦 Installing dependencies..."
 apt update
 apt install -y python3 python3-pip git openssh-client
 
-echo "📁 Cloning repo..."
+cd backend
 
-git clone https://github.com/jacobtey-sudo/keenetis.git
-cd keenetis/backend
+echo "🐍 Setting up Python venv..."
 
-echo "🐍 Installing python deps..."
-pip3 install -r requirements.txt
+apt install -y python3-venv
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install --upgrade pip
+pip install -r requirements.txt
 
 echo "⚙️ Creating systemd service..."
 
